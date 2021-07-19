@@ -422,6 +422,9 @@ class LegacyClient(ClientBase):
     nss_path = '/nss'
     ns_path = '/nss/%s'
 
+    hps_path = '/healings'
+    hp_path = '/healings/%s'
+
     clusters_path = '/clusters'
     cluster_path = '/clusters/%s'
     cluster_members_path = '/clustermembers'
@@ -763,6 +766,17 @@ class LegacyClient(ClientBase):
     def delete_clustermember(self, clustermember):
         return self.delete(self.cluster_member_path % clustermember)
 
+    @APIParamsCall
+    def list_healings(self, retrieve_all=True, **_params):
+        hps = self.list('healings', self.hps_path, retrieve_all, **_params)
+        return hps
+
+    @APIParamsCall
+    def create_healing(self, body=None):
+        return self.post(self.hps_path, body)
+
+    
+
 
 class VnfPackageClient(ClientBase):
     """Client for vnfpackage APIs.
@@ -1075,6 +1089,11 @@ class Client(object):
         return self.legacy_client.list_nsds(retrieve_all=retrieve_all,
                                             **_params)
 
+    def list_healings(self, retrieve_all=True, **_params):
+        return self.legacy_client.list_healings(retrieve_all=retrieve_all,
+                                            **_params)
+    def create_healing(self, body):
+        return self.legacy_client.create_healing(body)
     def show_nsd(self, nsd, **_params):
         return self.legacy_client.show_nsd(nsd, **_params)
 

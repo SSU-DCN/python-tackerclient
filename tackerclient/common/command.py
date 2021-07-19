@@ -22,7 +22,7 @@ from cliff import command
 class OpenStackCommand(command.Command):
     """Base class for OpenStack commands."""
 
-    api = None
+    api = True
 
     def run(self, parsed_args):
         stderr.write("Deprecated: tacker command line is deprecated, "

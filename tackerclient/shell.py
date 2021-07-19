@@ -53,6 +53,7 @@ from tackerclient.tacker.v1_0.nfvo import vim
 from tackerclient.tacker.v1_0.nfvo import vnfcluster
 from tackerclient.tacker.v1_0.nfvo import vnffg
 from tackerclient.tacker.v1_0.nfvo import vnffgd
+from tackerclient.tacker.v1_0.nfvo import healingpolicy
 from tackerclient.tacker.v1_0.vnfm import vnf
 from tackerclient.tacker.v1_0.vnfm import vnfd
 from tackerclient.version import __version__
@@ -180,6 +181,9 @@ COMMAND_V1 = {
     'cluster-member-show': vnfcluster.ShowClusterMember,
     'cluster-member-list': vnfcluster.ListClusterMember,
     'cluster-member-delete': vnfcluster.DeleteClusterMember,
+
+    'healing-policy-list': healingpolicy.ListHP,
+    'healing-policy-create': healingpolicy.CreateHP
 }
 
 COMMANDS = {'1.0': COMMAND_V1}
